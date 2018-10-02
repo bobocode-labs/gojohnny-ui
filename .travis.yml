@@ -1,17 +1,12 @@
-language: java
-
-dist: trusty
-sudo: false
-
-# Get latest install-jdk.sh script
-before_install:
-  - wget https://github.com/sormuras/bach/raw/master/install-jdk.sh
-
-matrix:
-  include:
-# Java 10 "Oracle JDK"
-    - env: JDK='Oracle JDK 10'
-      install: . ./install-jdk.sh -F 10 -L BCL
-# Java 10 "OpenJDK"
-    - env: JDK='OpenJDK 10'
-      install: . ./install-jdk.sh -F 10 -L GPL
+language: node_js
+node_js:
+- stable
+- '6'
+- '4'
+deploy:
+  provider: heroku
+  api_key:
+    secure: VUHn+Z6A51NESrmK3e/fVUJvXGfcDw6C5CLatyRtO/q7rQcNlvYEFlAunz0qUdSD2kLAUN1SYm2giX7Y5Ini86NSFzJIwUHxPOmObnC49zIxP4gvAh4XCfySj8mjh4Y+lc+y/jC+uatZ42GZ8oDXF46bLNDJ5V7DL0JZBMV2qjKVblyeX3/92SaVgFILo+Lrb0pzfBsMId7sK0fhvIHhcfhKjyoB7HP/MltUC+YXTSjcNgkVDyban9ofS28+CQDZT4rqaG1YQsB9KJkF/6W8tZe+i1j8koC0MXu/YrRiQE1vFaAitnamMf1XiknlmPUTFgWq3l4J/X/AfuQuR0ff2+xsJmuw7fNTQada6eaAajm9EoY2LOFlHvWHGEriE9mahUR4hQcenCoa7CO0Jk1esf0rAr5xbqsFQkxlLZZTImivzqAPL8PM6cE7BJNtIA+9iXZgMah7yM/IYM4IXqFFQIgxVc9AO82ijC6WNUCA6ZjaHTqfVmSfF5+4W4zZBS/yBa3izQ9v9d4QtuvRRhPJ8eO1CSQTwAVmOdCCmrB78XqlIhOMTao6kUOuaON+jSMkyLXFgjibMwcfpfIYYH/abkuMc2aM48dEqwcGRo7CHozb2hCQFRl7Io0lDt/lba7oadqot/HYvHHso+J/Y0bjvd6pO++Z2tFXUVqIVLaRigQ=
+  app: gojohnny-ui
+  on:
+    repo: bobocode-labs/gojohnny-ui
