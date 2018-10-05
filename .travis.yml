@@ -1,6 +1,9 @@
 language: node_js
 node_js:
-- stable
+  - stable
+
+before_install:
+  - npm install
 #- '6'
 #- '4'
 deploy:
