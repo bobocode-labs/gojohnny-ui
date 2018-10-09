@@ -1,6 +1,9 @@
 language: node_js
 node_js:
-- stable
+  - stable
+script:
+  - npm run build
+#  - npm test
 deploy:
   provider: heroku
   api_key:
