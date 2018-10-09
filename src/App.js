@@ -1,29 +1,30 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import mapboxgl from 'mapbox-gl';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-            <h1>Welcome to Bobocode</h1>
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+    componentDidMount() {
+        mapboxgl.accessToken = 'pk.eyJ1IjoiYm95NHVjayIsImEiOiJkWlgxdVhRIn0.nzy-n4qIL6QNPiWtTO_UTw';
+        this.map = new mapboxgl.Map({
+            container: this.mapContainer,
+            style: 'mapbox://styles/boy4uck/cj8795w2h3c5k2qs6sq35cu9z',
+        });
+    }
+
+    componentWillUnmount() {
+        this.map.remove();
+    }
+
+    render() {
+        const style = {
+            position: 'absolute',
+                top: 0,
+                bottom: 0,
+                width: '100%'
+        };
+
+        return <div style={style} ref={el => this.mapContainer = el} />;
+    }
 }
 
 export default App;
